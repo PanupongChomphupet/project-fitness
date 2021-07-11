@@ -1,5 +1,6 @@
 import styles from '../styles/Updatelevel.module.css'
 /* import Select from 'react-select'; */
+import { ReactVideo } from "reactjs-media";
 import axios from 'axios';
 import swal from 'sweetalert'
 import { useHistory, useParams } from 'react-router-dom';
@@ -122,7 +123,7 @@ function Updatelevel() {
         })
 
     }
-    
+
     return (
         <div className={styles.bg}>
             <div className={styles.hearder}>
@@ -149,12 +150,14 @@ function Updatelevel() {
                     {listvideo.map((item, index) =>
                         <div key={index}>
                             <div className={styles.video}>
-                                <video width="338" controls>
-                                    <source src={`https://storage.googleapis.com/video-course/${item}`} type="video/mp4" />
-                                </video>
+                                <ReactVideo
+                                    src= {`https://storage.googleapis.com/video-course/${item}`}
+                                    poster="https://www.example.com/poster.png"
+                                    primaryColor="red"
+                                // other props
+                                />
                                 <button onClick={e => delectvideo(item)} className={styles.btn}>ลบ</button>
                             </div>
-
                         </div>
                     )}<br /><br />
                     <label>เพิ่มวิดิโอ</label><br />
